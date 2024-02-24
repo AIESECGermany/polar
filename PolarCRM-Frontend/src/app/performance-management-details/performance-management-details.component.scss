@@ -1,0 +1,144 @@
+@import '../../variables.scss';
+
+$tab-padding: 20px;
+$tab-margin: 18px;
+
+.main {
+    height: 100%;
+}
+
+mat-expansion-panel {
+    margin-top: 20px;
+}
+
+mat-tab-group {
+    padding: 10px;
+    height: calc(100% - 20px);
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-tab-body-wrapper{
+    flex-grow: 1;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0px;
+}
+
+.loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.base {
+    display: flex;
+    flex-direction: column;
+    margin: $tab-margin;
+    padding: $tab-padding;
+    border-radius: 8px;
+    height: calc(100% - 2*$tab-margin - 2*$tab-padding);
+    width: calc(100% - 2*$tab-margin - 2*$tab-padding);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+    margin: 2rem 0;
+}
+
+.roleSubheader {
+    font-size: 18px;
+}
+
+.member-doc {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.info-section, .docs-section {
+    column-gap: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 45%;
+
+    .docs-button, .save-button {
+        width: 50%;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        fa-icon {
+            margin-right: 10px;
+        }
+    }
+
+    .docs-button {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .docs-button:hover, .save-button:hover {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+
+    .docs-input {
+        margin-bottom: 22px;
+    }
+}
+
+.panel-line {
+    display: block
+}
+
+.stage {
+    align-self: center;
+    margin-top: calc(2*$tab-margin);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    mat-form-field {
+        min-width: 16rem;
+        padding: 20px;
+    }
+
+    button {
+        margin-right: 15px;
+        border-radius: $box-border-radius;
+        padding: 10px 30px;
+        background-color: var(--secondary-color);
+    }
+
+    button:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        cursor: pointer;
+    }
+}
+
+.add-button {
+    align-self: center;
+    border-radius: $box-border-radius;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    margin-top: 22px;
+}
+
+.add-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+}

@@ -1,0 +1,81 @@
+@use '@angular/material' as mat;
+$primary-color: #263238;
+$accent-color: #FF9800;
+
+$primary-palette: (
+    50: #263238,
+    100: #263238,
+    200: #263238,
+    300: #263238,
+    400: #263238,
+    500: #263238,
+    600: #263238,
+    700: #263238,
+    800: #263238,
+    900: #263238,
+    A100: #263238,
+    A200: #263238,
+    A400: #263238,
+    A700: #263238,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: white,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
+);
+
+$accent-palette: (
+    50: #FF9800,
+    100: #FF9800,
+    200: #FF9800,
+    300: #FF9800,
+    400: #FF9800,
+    500: #FF9800,
+    600: #FF9800,
+    700: #FF9800,
+    800: #FF9800,
+    900: #FF9800,
+    A100: #FF9800,
+    A200: #FF9800,
+    A400: #FF9800,
+    A700: #FF9800,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: white,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
+);
+
+$primary-color: mat.define-palette($primary-palette);
+$accent-color: mat.define-palette($accent-palette);
+
+$polar-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-color,
+    accent: $accent-color,
+  ),
+));
+
+@include mat.all-component-themes($polar-theme);

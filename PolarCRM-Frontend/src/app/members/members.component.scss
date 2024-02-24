@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+
+mat-card {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  mat-form-field {
+    width: 75%;
+    flex-shrink: 1;
+    margin: unset;
+    margin-right: 10px;
+  }
+  mat-chip-listbox {
+    margin: auto;
+    margin-bottom: 30px;
+  }
+}
+  
+table {
+    width: 100%;
+}
+  
+th {
+  width: 20%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--tertiary-color) !important;
+  cursor: pointer;
+}
+
+.mat-column-id {
+  width: 5%;
+}
+
+.mat-column-first-name {
+  width: 20%;
+}
+
+.mat-column-lc {
+  width: 15%;
+}
+
+.mat-column-role-current {
+  width: 15%;
+}
+
+.mat-column-team-current {
+  width: 15%;
+}
+
+.mat-column-stage {
+  width: 10%;
+}
+
+.mat-column-verified {
+  width: 5%;
+}

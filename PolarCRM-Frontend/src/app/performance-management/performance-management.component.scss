@@ -1,0 +1,27 @@
+mat-card {
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.activeMember {
+    background-color: var(--tertiary-color);
+}
+
+.member-nav {
+    width: 300px;
+    overflow: auto;
+}
+
+.member-performance {
+    flex-grow: 1; 
+    overflow: auto;
+}
+
+.loading {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

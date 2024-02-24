@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+.sidenav {
+    z-index: 1;
+    border-top-right-radius: var(--sidenav-border-radius);
+    border-bottom-right-radius: var(--sidenav-border-radius);
+    box-shadow: 0.063rem 0rem 1.25rem 0 black;
+}
+
+.body {
+    flex-grow: 1;
+    transition: all .5s ease;
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem 0rem 2rem;
+    height: 100vh;
+    overflow: auto;
+}

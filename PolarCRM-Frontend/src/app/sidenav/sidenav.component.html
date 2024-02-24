@@ -1,0 +1,27 @@
+<div class="sidenav" [ngClass]="extended ? 'sidenav-extended': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">P</button>
+        <div class="logo-text" @fadeInOut *ngIf="extended">Polar</div>
+    </div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" 
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="extended">
+                    {{data.label}}
+                </span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item" (click)="logout()">
+            <a class="sidenav-nav-link">
+                <i class="sidenav-link-icon" [class]="'fal fa-sign-out-alt'"></i>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="extended">
+                    Logout
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>

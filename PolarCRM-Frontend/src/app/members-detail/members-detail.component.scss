@@ -1,0 +1,95 @@
+@import '../../variables.scss';
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    padding: 20px;
+    gap: 0px 50px;
+}
+
+.member-information {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 12;
+}
+
+.characteristics {
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary-color);
+    margin: 20px 0px;
+    a, span {
+        padding: 5px;
+        overflow: hidden;
+    }
+}
+
+.stage {
+    grid-column: 1 / span 1;
+    grid-row: 13 / span 2;
+    display: flex;
+    align-items: center;
+    border: 3px solid var(--primary-color);
+    border-radius: $box-border-radius;
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+    }
+}
+
+.infos {
+    margin-left: auto;
+    margin-right: 15px;
+    background-color: var(--secondary-color);
+    border-radius: $box-border-radius;
+    max-width: 20rem;
+    min-width: 20rem;
+}
+
+.comment-box {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 14;
+    display: flex;
+    flex-direction: column;
+    border-radius: $box-border-radius;
+    border: 3px solid var(--primary-color);
+    background-color: var(--secondary-color);
+
+    h3, p {
+        margin-left: 10px;
+    }
+
+    .entries {
+        overflow: auto;
+        // flex: 1 1 auto;
+        max-height: 65vh;
+    }
+
+    .entry {
+        font-size: 12px;
+    }
+
+    .chatbox {
+        align-self: center;
+        border-radius: $box-border-radius;
+        width: 90%;
+        margin: 15px;
+        font: 17px arial, sans-serif;
+    }
+}
+
+.manual {
+    font-weight: bold;
+}
+
+.automatic {
+    font-style: italic;
+}
+
+.loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

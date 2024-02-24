@@ -1,0 +1,115 @@
+@import '../../variables.scss';
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    height: calc(100% - 40px);
+    width: calc(100% - 40px);
+    padding: 20px;
+    gap: 0px 50px;
+}
+
+.applicant-information {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 12;
+}
+
+.characteristics {
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary-color);
+    margin: 20px 0px;
+    a, span {
+        padding: 5px;
+        overflow: hidden;
+    }
+}
+    
+.stage {
+    grid-column: 1 / span 1;
+    grid-row: 13 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid var(--primary-color);
+    border-radius: $box-border-radius;
+
+    mat-form-field {
+        margin-left: 15px;
+        min-width: 16rem;
+    }
+
+    button {
+        margin-left: 10px;
+        margin-right: 15px;
+        border-radius: $box-border-radius;
+        padding: 10px 30px;
+        background-color: var(--secondary-color);
+    }
+
+    button:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        cursor: pointer;
+    }
+}
+
+.infos {
+    margin-left: auto;
+    background-color: var(--secondary-color);
+    border-radius: $box-border-radius;
+    max-width: 16rem;
+    min-width: 16rem;
+}
+
+.comment-box {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 14;
+    display: flex;
+    flex-direction: column;
+    border-radius: $box-border-radius;
+    border: 3px solid var(--primary-color);
+    background-color: var(--secondary-color);
+
+    h3, p {
+        margin-left: 10px;
+    }
+
+    .entries {
+        overflow: auto;
+        // flex: 1 1 auto;
+        max-height: 65vh;
+    }
+
+    .entry {
+        font-size: 12px;
+    }
+
+    .chatbox {
+        align-self: center;
+        border-radius: $box-border-radius;
+        width: 90%;
+        margin: 15px;
+        font: 17px arial, sans-serif;
+    }
+}
+
+.manual {
+    font-weight: bold;
+}
+
+.automatic {
+    font-style: italic;
+}
+
+.loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0px;
+}

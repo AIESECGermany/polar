@@ -1,0 +1,49 @@
+@import '../../variables.scss';
+
+mat-card {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  mat-form-field {
+    width: 75%;
+    flex-shrink: 1;
+    margin: unset;
+    margin-right: 10px;
+  }
+  mat-chip-listbox {
+    margin: auto;
+    margin-bottom: 30px;
+  }
+}
+
+table {
+    width: 100%;
+}
+  
+th {
+  width: 20%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--tertiary-color) !important;
+  cursor: pointer;
+}
+
+.mat-column-_id {
+  width: 8%;
+}
+
+.mat-column-createdAt {
+  width: 20%;
+}

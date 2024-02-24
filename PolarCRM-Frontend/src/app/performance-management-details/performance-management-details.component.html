@@ -1,0 +1,168 @@
+
+<ng-container *ngIf="ready then content else loading"></ng-container>
+
+<ng-template #content>
+    <div class="main">
+        <mat-tab-group animationDuration="200ms">
+            <mat-tab label="Documentation" *ngIf="!memberDetails.membershipVerified">
+                <div class="base member-doc mat-elevation-z4">
+                  <div class="info-section">
+                    <h3>Member Information</h3>
+                    <mat-form-field class="docs-input" appearance="outline">
+                      <mat-label>Expa ID</mat-label>
+                      <input matInput>
+                    </mat-form-field>
+                    <mat-form-field class="docs-input" appearance="outline">
+                      <mat-label>AIESEC Email</mat-label>
+                      <input matInput>
+                    </mat-form-field>
+                    <button class="mat-elevation-z4 save-button">
+                      <fa-icon class="fa-solid fa-save"></fa-icon>
+                      Save Changes
+                    </button>
+                  </div>
+                  <div class="docs-section">
+                    <h3>Data Security Documents</h3>
+                    <button class="mat-elevation-z4 docs-button">
+                      <fa-icon class="fa-solid fa-download"></fa-icon>
+                      Download
+                    </button>
+                    <button class="mat-elevation-z4 docs-button">
+                      <fa-icon class="fa-solid fa-upload"></fa-icon>
+                      Upload
+                    </button>
+                  </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Roles">
+                <div class="base mat-elevation-z4">
+                  <ng-container *ngIf="currentMemberRole === 'none' || currentMemberFunction === 'none' then newRoleBuilder else currentRole"/>
+                  <h3>Past Roles</h3>
+                  <mat-expansion-panel *ngFor="let role of memberDetails.pastRole">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{ transformRoleView(role.role) }}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          {{ transformFunctionView(role.function) }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <span class="characteristics">
+                      <span>Term: </span>
+                        <span class="infos">
+                          {{ transformDate(role.firstDateInRole) }} &ndash; {{ transformDate(role.lastDateInRole) }}
+                        </span>
+                      </span>
+                  </mat-expansion-panel>
+                </div>
+            </mat-tab>
+            <mat-tab label="Goal Setting">
+                <div class="base mat-elevation-z4">
+                  <h3>Current Goals</h3>
+                  <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Goal 1
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Sign Ups
+                      </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <span class="panel-line"><span>Sign Ups: </span><span class="infos">45</span></span>
+                      <span class="panel-line"><span>Realized: </span><span class="infos">120</span></span>
+                  </mat-expansion-panel>
+                  <h3>Past Goals</h3>
+                  <mat-expansion-panel
+                      (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false"
+                  >
+                      <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Goal 25
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Sign Ups
+                          </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <span class="characteristics"><span>Term: </span><span class="infos">11.09.2023 &ndash; 11.03.2024</span></span>
+                  </mat-expansion-panel>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</ng-template>
+
+<ng-template #newRoleBuilder>
+  <h3>Select a new Role</h3>
+  <div class="newRole">
+    <div class="row">
+      <span class="roleSubheader">Role:</span>
+      <mat-chip-listbox (change)="updateRole($event)">
+        <mat-chip-option *ngFor="let role of roles" [value]="role.value">
+          {{ role.displayValue }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    <div class="row">
+      <span class="roleSubheader">Function:</span>
+      <mat-chip-listbox (change)="updateFunction($event)">
+        <mat-chip-option *ngFor="let function of functions" [value]="function.value">
+          {{ function.displayValue }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Job Description (Optional)</mat-label>
+      <input matInput [(ngModel)]="newJobDescription">
+    </mat-form-field>
+  </div>
+  <button class="mat-elevation-z4 add-button" (click)="addNewRole()">
+    <fa-icon class="fa-solid fa-plus"></fa-icon>
+    Add New Role
+  </button>
+</ng-template>
+
+<ng-template #currentRole>
+  <h3>Current Role</h3>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ transformRoleView(currentMemberRole) }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ transformFunctionView(currentMemberFunction) }}
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+    <span class="panel-line">
+      <span>Term:</span>
+      <span class="infos">
+        {{ transformDate(memberDetails.currentRole.firstDateInRole) }}
+        &ndash;
+        {{ transformDate(memberDetails.currentRole.endOfTerm) }}
+      </span>
+    </span>
+    <span class="panel-line"><span>Job Description: </span><span class="infos"> {{ memberDetails.currentRole.jobDescription }}</span></span>
+  </mat-expansion-panel>
+  <span class="stage">
+    <mat-form-field appearance="outline">
+        <mat-label>Change Member Stage</mat-label>
+        <mat-select
+          [(value)]="currentMemberStage"
+          [disabled]="
+            currentMemberStage === 'dropped' ||
+            currentMemberStage === 'terminated' ||
+            currentMemberStage === 'advanced' ||
+            currentMemberStage === 'alumni'
+          ">
+          <mat-option *ngFor="let stage of memberStages" [value]="stage.value">{{ stage.displayValue }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button (click)="updateStage()">Save</button>
+  </span>
+</ng-template>
+
+<ng-template #loading>
+    <div class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
